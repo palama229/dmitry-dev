@@ -1,0 +1,165 @@
+/* =========================
+   DMITRY.DEV - PREMIUM CSS
+   ========================= */
+
+
+/* ================= BLOCK ================= */
+
+.block {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px;
+
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,175,55,0.15);
+    border-radius: 12px;
+
+    position: relative;
+    overflow: hidden;
+    clip-path: inset(0); 
+
+    transition: 0.7s ease;
+
+    opacity: 0;
+    transform: translateY(70px) scale(.96);
+}
+
+/* ================= REVEAL ================= */
+
+.block.show {
+    animation: blockReveal 1.4s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes blockReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(70px) scale(.96);
+    }
+    60% { opacity: .8; }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ================= HOVER ================= */
+
+.block:hover {
+    transform: translateY(-6px);
+    border-color: rgba(212,175,55,.45);
+
+    box-shadow: 0 0 35px rgba(212,175,55,.15);
+}
+
+/* ================= SHIMMER ================= */
+
+.block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.10) 50%,
+        transparent 100%
+    );
+
+    transform: skewX(-20deg);
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.block:hover::before {
+    opacity: 1;
+    animation: shine 0.9s ease forwards;
+}
+
+@keyframes shine {
+    from {
+        left: -120%;
+    }
+    to {
+        left: 140%;
+    }
+}
+
+/* ================= CONTENT ABOVE EFFECT ================= */
+
+.block > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= TEXT ================= */
+
+.block h2 {
+    color: #d4af37;
+    text-shadow: 0 0 15px rgba(212,175,55,.8);
+}
+
+.block p {
+    color: rgba(255,255,255,.75);
+    line-height: 1.7;
+    text-shadow: 0 0 10px rgba(255,255,255,.25);
+}
+
+/* ================= EXPAND ================= */
+
+.block .short {
+    font-size: 18px;
+    color: #d4af37;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.block .expand {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    transition: max-height .8s ease, opacity .5s ease;
+}
+
+.block:hover .expand {
+    max-height: 800px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.block .expand p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+.logo {
+    font-size: 64px;
+    letter-spacing: 6px;
+    color: #d4af37;
+    margin: 0;
+
+    text-shadow:
+        0 0 10px rgba(212,175,55,0.35),
+        0 0 25px rgba(212,175,55,0.25),
+        0 0 45px rgba(212,175,55,0.15);
+
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    from {
+        text-shadow:
+            0 0 8px rgba(212,175,55,0.25),
+            0 0 18px rgba(212,175,55,0.15);
+    }
+    to {
+        text-shadow:
+            0 0 18px rgba(212,175,55,0.55),
+            0 0 40px rgba(212,175,55,0.35),
+            0 0 70px rgba(212,175,55,0.20);
+    }
+}
